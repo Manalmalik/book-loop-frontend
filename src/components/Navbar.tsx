@@ -21,26 +21,26 @@ function Navbar() {
           <img src={logo} />
         </NavLink>
         <div className="navbar-tabs">
-          <NavLink to="/" className="btn-default">
+          <NavLink to="/" >
             {" "}
             My shelf{" "}
           </NavLink>
-          <NavLink to="/" className="btn-default">
+          <NavLink to="/" >
             {" "}
             Progress{" "}
           </NavLink>
-          <NavLink to="/" className="btn-default">
+          <NavLink to="/">
             {" "}
             Reading club{" "}
           </NavLink>
         </div>
         {!isLoggedIn ? (
           <div className="buttons">
-            <NavLink to="/signup" className="btn-primary">
+            <NavLink to="/signup" className="btn-default">
               {" "}
               Sign Up{" "}
             </NavLink>
-            <NavLink to="/login" className="btn-primary">
+            <NavLink to="/login" className="btn-default">
               {" "}
               Login{" "}
             </NavLink>

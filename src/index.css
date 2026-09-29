@@ -12,7 +12,7 @@
   --color-violet: #5050D8;
   --color-soft-pink: #FFDAE3;
   --color-default: #FFF7E9;
-
+  --color-white: #FFFFFF;
 
   /* =========================
      SEMANTIC COLORS
@@ -46,7 +46,7 @@
 
 
   /* Font sizes */
-
+  --text-xxs: 0.6rem;
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
   --text-base: 1rem;
@@ -119,12 +119,17 @@ h4 {
   margin: 0;
 }
 
+p {
+  margin: 0
+}
+
 button,
 input,
 select,
 textarea {
   font-family: var(--font-body);
 }
+
 
 .reading-text {
   font-family: var(--font-reading);
