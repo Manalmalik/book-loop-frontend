@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" role="img" aria-labelledby="title desc">
+  <title id="title">Bookloop hero background</title>
+  <desc id="desc">Warm cream paper with the Bookloop hero's repeating teal, pink and yellow dot pattern.</desc>
+  <defs>
+    <pattern id="teal-dots" width="88" height="88" patternUnits="userSpaceOnUse">
+      <circle cx="44" cy="44" r="2" fill="#38bda9"/>
+    </pattern>
+    <pattern id="pink-dots" width="61" height="61" patternUnits="userSpaceOnUse">
+      <circle cx="58.5" cy="4.5" r="1.5" fill="#ee668b"/>
+    </pattern>
+    <pattern id="yellow-dots" width="49" height="49" patternUnits="userSpaceOnUse">
+      <circle cx="33.5" cy="36.5" r="1.5" fill="#ffc928"/>
+    </pattern>
+  </defs>
+  <rect width="1920" height="1080" fill="#fff7e8"/>
+  <rect width="1920" height="1080" fill="url(#teal-dots)"/>
+  <rect width="1920" height="1080" fill="url(#pink-dots)"/>
+  <rect width="1920" height="1080" fill="url(#yellow-dots)"/>
+</svg>

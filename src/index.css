@@ -1,0 +1,135 @@
+:root {
+  /* =========================
+     BRAND COLORS
+     ========================= */
+
+  --color-pink: #EE668B;
+  --color-teal: #38BDA9;
+  --color-yellow: #FFC928;
+
+  --color-paper: #FFF7E8;
+  --color-ink: #20212A;
+  --color-violet: #5050D8;
+  --color-soft-pink: #FFDAE3;
+  --color-default: #FFF7E9;
+
+
+  /* =========================
+     SEMANTIC COLORS
+     ========================= */
+
+  --color-primary: var(--color-pink);
+  --color-secondary: var(--color-teal);
+  --color-accent: var(--color-yellow);
+
+  --color-background: var(--color-paper);
+  --color-surface: #FFFFFF;
+
+  --color-text: var(--color-ink);
+  --color-text-muted: #686972;
+
+  --color-border: #E8DFD2;
+
+  --color-link: var(--color-violet);
+
+  --color-success: var(--color-teal);
+  --color-highlight: var(--color-soft-pink);
+
+
+  /* =========================
+     TYPOGRAPHY
+     ========================= */
+
+  --font-body: "Space Grotesk", Arial, sans-serif;
+  --font-heading: "Archivo Black", Arial, sans-serif;
+  --font-reading: Georgia, "Times New Roman", serif;
+
+
+  /* Font sizes */
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-md: 1.125rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.5rem;
+  --text-2xl: 2rem;
+  --text-3xl: 2.75rem;
+  --text-4xl: 4rem;
+
+
+  /* =========================
+     SPACING
+     ========================= */
+
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+
+
+  /* =========================
+     BORDER RADIUS
+     ========================= */
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-pill: 999px;
+
+
+  /* =========================
+     SHADOWS
+     ========================= */
+
+  --shadow-sm: 0 2px 8px rgba(32, 33, 42, 0.08);
+
+  --shadow-md:
+    0 6px 18px rgba(32, 33, 42, 0.12);
+
+  --shadow-card:
+    4px 4px 0 var(--color-ink);
+
+
+  /* =========================
+     TRANSITIONS
+     ========================= */
+
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+}
+
+body {
+  margin: 0;
+
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background-color: var(--color-background);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading);
+  margin: 0;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: var(--font-body);
+}
+
+.reading-text {
+  font-family: var(--font-reading);
+}
+
+a, a:visited, a:active {
+  text-decoration: none;
+}
