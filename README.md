@@ -1,33 +1,32 @@
-# Bookloop Frontend
+# React + TypeScript + Vite
 
-Bookloop is a playful reading tracker built with React and TypeScript.
+This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
 
-Users can organize their personal library, track reading progress, move books between reading states, and take part in reading challenges with friends.
+Currently, two official plugins are available:
 
-## Tech Stack
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-- React
-- TypeScript
-- React Router
-- CSS
-- REST API
+## React Compiler
 
-## Features
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-- Browse and manage books
-- Track reading progress
-- Organize books by status:
-  - Want to Read
-  - Reading
-  - Finished
-- Drag and drop books between reading states
-- View reading challenges
-- Track challenge progress
+## Expanding the Oxlint configuration
 
-## Backend
+If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
 
-The frontend connects to the Bookloop REST API built with Express, TypeScript, PostgreSQL, and Prisma.
+```json
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["react", "typescript", "oxc"],
+  "options": {
+    "typeAware": true
+  },
+  "rules": {
+    "react/rules-of-hooks": "error",
+    "react/only-export-components": ["warn", { "allowConstantExport": true }]
+  }
+}
+```
 
-## Status
-
-Currently in development.
+See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
