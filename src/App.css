@@ -12,6 +12,7 @@
   display: flex;
   flex-direction: column;
   padding: var(--space-2xl);
+  gap: var(--space-2xl);
 }
 
 
@@ -22,6 +23,55 @@
   margin: 0;
   background-color: var(--color-ink);
   width: 100%;
+}
+
+.hr-secondary {
+  width: 10%;
+  height: 1px;
+  border: 0;
+  margin: 0;
+  background-color: var(--color-pink);
+  width: 100%;
+}
+
+/* TICK BANNER */
+.headliner {
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--color-ink);
+  color: var(--color-paper);
+  padding: var(--space-sm);
+}
+
+.headliner-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: headliner-scroll 25s linear infinite;
+}
+
+.headliner-track span {
+  flex-shrink: 0;
+  margin-right: 4rem;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.25rem;
+  white-space: nowrap;
+}
+
+.headliner-star {
+  color: var(--color-primary);
+  font-size: var(--text-sm);
+}
+
+@keyframes headliner-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 /* NAVBAR */
@@ -213,4 +263,48 @@
 .tilted-card > img {
   height: 16rem;
   width: 14rem;
+}
+
+/* PAGE HEADER */
+.header-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.page-header{
+  display: flex;
+  gap: var(--space-md);
+}
+
+.page-header > h1 {
+  font-size: var(--text-3xl);
+  text-transform: uppercase;
+  align-self: center;
+}
+
+.bookshelf-container {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-paper);
+  border: 2px solid var(--color-ink);
+  box-shadow: 4px 4px var(--color-ink);
+  padding: var(--space-md);
+  gap: var(--space-lg);
+}
+
+/* CARDS */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  background-color: var(--color-white);
+  padding: var(--space-sm);
+}
+
+.card > img {
+  width: 12rem;
+  height: 14rem;
+  padding-bottom: var(--space-md);
 }
