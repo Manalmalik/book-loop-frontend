@@ -6,6 +6,8 @@ import Navbar from "./components/Navbar";
 import HomePage from "./pages/HomePage";
 import TickBanner from "./components/TickBanner";
 import BookShelfPage from "./pages/BookShelfPage";
+import ViewAllBooksPage from "./pages/ViewAllBooksPage";
+import PrivateWrapper from "./components/PrivateWrapper";
 
 function App() {
   return (
@@ -17,7 +19,9 @@ function App() {
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/" element={<HomePage/>} />
-        <Route path="/bookshelf" element={<BookShelfPage/>}/>
+        <Route path="/bookshelf" element={<PrivateWrapper> <BookShelfPage/> </PrivateWrapper>}/>
+        <Route path="/allBooks" element={<ViewAllBooksPage/>}/>
+        
       </Routes>
     </div>
     </div>

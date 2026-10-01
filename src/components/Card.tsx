@@ -1,8 +1,31 @@
-function Card() {
+type CardProps = {
+  title: string,
+  coverUrl: string,
+  author: string,
+  genre: string,
+}
+
+function Card({title, coverUrl, author, genre} : CardProps ) {
+  const handleBookmarkClick = () => {
+   console.log("added to favorite")
+  }
+
+  const handleStartBtnClick = () => {
+    console.log("added to Reading")
+  }
+
   return (
      <div className='card'>
-        <img src='https://m.media-amazon.com/images/I/81k3bgJ2EhL._SY522_.jpg' alt='Book cover'/>
-        <p> image </p>
+        <span onClick={handleBookmarkClick}>
+          <i className="fa-regular fa-bookmark"></i>
+        </span>
+        <p className="card-caption"> {genre} </p>
+        <img src={coverUrl} alt='Book cover'/>
+        <p className="card-title"> {title} </p>
+        <p className="card-desc"> by {author} </p>
+        <div className="card-buttons">
+          <button onClick={handleStartBtnClick} className="btn-default"> Start Reading </button>
+        </div>
     </div>
   )
 }

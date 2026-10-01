@@ -21,9 +21,8 @@ function Navbar() {
           <img src={logo} />
         </NavLink>
         <div className="navbar-tabs">
-          <NavLink to="/bookshelf" >
-            {" "}
-            My shelf{" "}
+          <NavLink to="/allBooks" >
+          Discover Books
           </NavLink>
           <NavLink to="/" >
             {" "}
