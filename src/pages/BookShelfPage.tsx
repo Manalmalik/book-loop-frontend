@@ -3,8 +3,24 @@ import Card from "../components/Card";
 import authService from "../services/index.services";
 import BookCard from "../components/BookCard";
 import { NavLink } from "react-router-dom";
+import { useAuth } from "../context/useAuth";
+import { getApiError } from "../utils/getApiError";
 
 type ReadingStatus = "WANT_TO_READ" | "READING" | "FINISHED";
+type ChallengeStatus = "PENDING" | "ACCEPTED" | "DECLINED" | "COMPLETED";
+
+type Challenge = {
+  id: number;
+  title: string | null;
+  message: string | null;
+  status: ChallengeStatus;
+  deadline: string | null;
+  challengerId: number;
+  challengedUserId: number;
+  challenger: { id: number; name: string };
+  challengedUser: { id: number; name: string };
+  book: { id: number; title: string; author: string; coverUrl: string | null };
+};
 
 type UserBook = {
   id: number;
@@ -35,6 +51,11 @@ type Book = {
 
 function BookShelfPage() {
   const [userBookData, setUserBooksData] = useState<UserBook[]>([]);
+  const [challenges, setChallenges] = useState<Challenge[]>([]);
+  const [areChallengesLoading, setAreChallengesLoading] = useState(true);
+  const [challengeError, setChallengeError] = useState("");
+  const [respondingToChallengeId, setRespondingToChallengeId] = useState<number | null>(null);
+  const { loggedUserId } = useAuth();
 
   const fetchUserBooksData = async () => {
     const response = await authService.get("/auth/user-books");
@@ -44,6 +65,37 @@ function BookShelfPage() {
   useEffect(() => {
     fetchUserBooksData();
   }, []);
+
+  useEffect(() => {
+    const fetchChallenges = async () => {
+      try {
+        const response = await authService.get<{ challenges: Challenge[] }>("/challenges");
+        setChallenges(response.data.challenges);
+      } catch (error) {
+        setChallengeError(getApiError(error).message);
+      } finally {
+        setAreChallengesLoading(false);
+      }
+    };
+
+    fetchChallenges();
+  }, []);
+
+  const handleChallengeResponse = async (challengeId: number, status: "ACCEPTED" | "DECLINED") => {
+    setChallengeError("");
+    setRespondingToChallengeId(challengeId);
+
+    try {
+      await authService.patch(`/challenges/${challengeId}`, { status });
+      setChallenges((currentChallenges) => currentChallenges.map((challenge) => (
+        challenge.id === challengeId ? { ...challenge, status } : challenge
+      )));
+    } catch (error) {
+      setChallengeError(getApiError(error).message);
+    } finally {
+      setRespondingToChallengeId(null);
+    }
+  };
 
   const handleBookmarkClick = async (bookId: number) => {
     try {
@@ -127,6 +179,72 @@ function BookShelfPage() {
             )
           );
         })}
+        <div>
+          <div className="challenge-list-heading">
+            <div>
+              <h3>Reading challenges</h3>
+              <p>Keep each other turning pages.</p>
+            </div>
+            <NavLink to="/createChallenge" className="btn-default">Add a challenge</NavLink>
+          </div>
+          {challengeError && <p className="challenge-list-feedback" role="alert">{challengeError}</p>}
+          {areChallengesLoading && <p className="challenge-list-feedback">Loading challenges...</p>}
+          {!areChallengesLoading && !challengeError && challenges.length === 0 && (
+            <p className="challenge-list-feedback">No challenges yet. Start one with another reader.</p>
+          )}
+          {challenges.length > 0 && (
+            <div className="challenge-list">
+              {challenges.map((challenge) => {
+                const isChallengeSent = challenge.challengerId === loggedUserId;
+                const otherReader = isChallengeSent ? challenge.challengedUser : challenge.challenger;
+
+                return (
+                  <article className="challenge-item" key={challenge.id}>
+                    <div className="challenge-item-book">
+                      {challenge.book.coverUrl && <img src={challenge.book.coverUrl} alt="" />}
+                      <div>
+                        <span className={`challenge-status challenge-status-${challenge.status.toLowerCase()}`}>
+                          {challenge.status.replaceAll("_", " ")}
+                        </span>
+                        <h4>{challenge.title || challenge.book.title}</h4>
+                        <p>{challenge.book.author}</p>
+                      </div>
+                    </div>
+                    <div className="challenge-item-details">
+                      <p>{isChallengeSent ? "You challenged" : "Challenge from"} <strong>{otherReader.name}</strong></p>
+                      {challenge.message && <p className="challenge-item-message">“{challenge.message}”</p>}
+                      {challenge.deadline && (
+                        <p className="challenge-item-deadline">
+                          Finish by {new Date(challenge.deadline).toLocaleDateString()}
+                        </p>
+                      )}
+                      {!isChallengeSent && challenge.status === "PENDING" && (
+                        <div className="challenge-response-actions">
+                          <button
+                            className="btn-secondary"
+                            type="button"
+                            disabled={respondingToChallengeId === challenge.id}
+                            onClick={() => handleChallengeResponse(challenge.id, "ACCEPTED")}
+                          >
+                            {respondingToChallengeId === challenge.id ? "Updating..." : "Accept"}
+                          </button>
+                          <button
+                            className="btn-default"
+                            type="button"
+                            disabled={respondingToChallengeId === challenge.id}
+                            onClick={() => handleChallengeResponse(challenge.id, "DECLINED")}
+                          >
+                            Decline
+                          </button>
+                        </div>
+                      )}
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+          )}
+        </div>
       </div>
       <div className="bookshelf-container">
        <div className="reading-secton-header">
