@@ -2,7 +2,6 @@ import { useEffect, useState } from "react"
 import Card from "../components/Card"
 import axios from "axios"
 import authService from "../services/index.services";
-import { NavLink } from "react-router-dom";
 import BookloopSpinner from "../components/BookLoopSpinner";
 
 type Book = {
@@ -113,9 +112,8 @@ function ViewAllBooksPage() {
             ) : filteredBooks.length === 0 ? (
                 <p className="page-empty-state">No books match your search.</p>
             ) : filteredBooks.map((book) => {
-                return <NavLink to={`/books/${book.id}`}>
-                        <Card key={book.id} title={book.title} author={book.author} coverUrl={book.coverUrl} genre={book.genre} handleBookmarkClick={()=> handleBookmarkClick(book.id)} handleStartBtnClick={() => handleStartBtnClick(book.id)}/>
-                    </NavLink>
+                return <Card key={book.id} title={book.title} author={book.author} coverUrl={book.coverUrl} genre={book.genre} handleBookmarkClick={()=> handleBookmarkClick(book.id)} handleStartBtnClick={() => handleStartBtnClick(book.id)}/>
+                   
             })}
         </div>
 
