@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Card from "../components/Card";
 import authService from "../services/index.services";
 import BookCard from "../components/BookCard";
+import { NavLink } from "react-router-dom";
 
 type ReadingStatus = "WANT_TO_READ" | "READING" | "FINISHED";
 
@@ -70,6 +71,14 @@ function BookShelfPage() {
     return userBookData.filter((book) => book.status === "WANT_TO_READ").length
   }
 
+  const getFinishedBooks = () => {
+     return userBookData.filter((book) => book.status === "FINISHED").length
+  }
+
+  const getReadingBooks = () => {
+    return userBookData.filter((book) => book.status === "READING").length
+  }
+
   return (
     <div className="container">
       <div className="header-container">
@@ -77,8 +86,20 @@ function BookShelfPage() {
           <h1> Your </h1>
           <h1 className="tile-primary"> BookShelf </h1>
         </div>
-        <div className="search-bar">
-          <input placeholder="search book" />
+        <div className="stats-bar">
+          {/* <input placeholder="search book" /> */}
+          <span className="stats-bar-content">
+            <h3 className="stats-content-header"> {getReadingBooks()}</h3>
+            <p className="stats-content-label"> in the loop </p>
+          </span>
+          <span className="stats-bar-content">
+            <h3 className="stats-content-header"> {getTotalBooksOnShelf()} </h3>
+            <p className="stats-content-label"> next for loop </p>
+          </span>
+          <span className="stats-bar-content">
+            <h3 className="stats-content-header"> {getFinishedBooks()} </h3>
+            <p className="stats-content-label"> out of loop</p>
+          </span>
         </div>
       </div>
       <div className="reading-section">
@@ -108,11 +129,37 @@ function BookShelfPage() {
         })}
       </div>
       <div className="bookshelf-container">
-        <p> {getTotalBooksOnShelf()} stories on the shelf </p>
+       <div className="reading-secton-header">
+          <span className="heading"> <p> Next for </p> <p className="heading-pink"> loop. </p> </span>
+           <p> {getTotalBooksOnShelf()} stories on the shelf </p>
+        </div>
         <hr className="hr-secondary" />
+        {userBookData.length === 0 && <NavLink to='/allBooks' className="btn-default"> Find A Book </NavLink>}
         <div className="cards">
           {userBookData?.map((data) => {
             return data.status === "WANT_TO_READ" && (
+              <Card
+                key={data.bookId}
+                title={data.book.title}
+                author={data.book.author}
+                coverUrl={data.book.coverUrl}
+                genre={data.book.genre}
+                handleBookmarkClick={() => handleBookmarkClick(data.book.id)}
+                handleStartBtnClick={() => handleStartBtnClick(data.book.id)}
+              />
+            );
+          })}
+        </div>
+      </div>
+          <div className="bookshelf-container">
+         <div className="reading-secton-header">
+          <span className="heading"> <p> out of</p> <p className="heading-pink"> loop. </p> </span>
+           <p> {getTotalBooksOnShelf()} stories on the shelf </p>
+        </div>
+        <hr className="hr-secondary" />
+        <div className="cards">
+          {userBookData?.map((data) => {
+            return data.status === "FINISHED" && (
               <Card
                 key={data.bookId}
                 title={data.book.title}

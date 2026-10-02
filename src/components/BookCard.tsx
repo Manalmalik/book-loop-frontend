@@ -35,8 +35,17 @@ function BookCard({coverUrl, genre, author, totalPages, currentPage, title, id} 
         }
     }
 
+    const handleDeleteClick = async() => {
+        try{
+            await authService.delete(`/auth/user-books/${id}`)
+            navigate("/allBooks")
+        } catch(e) {
+            console.log(e)
+        }
+    }
+
     const getProgress = () => {
-        return updatedCurrentPage / 100 * totalPages
+        return Math.round(updatedCurrentPage / 100 * totalPages)
     }
 
     const getPagesLeft = () => {
@@ -80,6 +89,7 @@ function BookCard({coverUrl, genre, author, totalPages, currentPage, title, id} 
             <button onClick={handleFinishBookClick} className="btn-primary"> Finish Book </button>
         </div>
       </div>
+      <button onClick={handleDeleteClick} className="btn-default"> <i className="fa-solid fa-eraser"></i> </button>
     </div>
   );
 }

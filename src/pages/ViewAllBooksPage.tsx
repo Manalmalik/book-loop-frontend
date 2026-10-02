@@ -2,7 +2,6 @@ import { useEffect, useState } from "react"
 import Card from "../components/Card"
 import axios from "axios"
 import authService from "../services/index.services";
-import { useAuth } from "../context/useAuth";
 
 type Book = {
   id: number,
@@ -26,7 +25,6 @@ function ViewAllBooksPage() {
     const [ allBooks, setAllBooks ] = useState<Book[]>([])
     const [ searchTerm, setSearchTerm ] = useState<string>("")
     const [ selectedGenre, setSelectedGenre ] = useState<string>("")
-    const { loggedUserId } = useAuth()
 
     const fetchAllBooks = async() => {
         try{
