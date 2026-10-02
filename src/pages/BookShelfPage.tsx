@@ -5,6 +5,7 @@ import BookCard from "../components/BookCard";
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../context/useAuth";
 import { getApiError } from "../utils/getApiError";
+import BookloopSpinner from "../components/BookLoopSpinner";
 
 type ReadingStatus = "WANT_TO_READ" | "READING" | "FINISHED";
 type ChallengeStatus = "PENDING" | "ACCEPTED" | "DECLINED" | "COMPLETED";
@@ -51,6 +52,7 @@ type Book = {
 
 function BookShelfPage() {
   const [userBookData, setUserBooksData] = useState<UserBook[]>([]);
+  const [isLoadingUserBooks, setIsLoadingUserBooks] = useState(true);
   const [challenges, setChallenges] = useState<Challenge[]>([]);
   const [areChallengesLoading, setAreChallengesLoading] = useState(true);
   const [challengeError, setChallengeError] = useState("");
@@ -58,8 +60,12 @@ function BookShelfPage() {
   const { loggedUserId } = useAuth();
 
   const fetchUserBooksData = async () => {
-    const response = await authService.get("/auth/user-books");
-    setUserBooksData(response.data.userBooks);
+    try {
+      const response = await authService.get("/auth/user-books");
+      setUserBooksData(response.data.userBooks);
+    } finally {
+      setIsLoadingUserBooks(false);
+    }
   };
 
   useEffect(() => {
@@ -138,6 +144,7 @@ function BookShelfPage() {
           <h1> Your </h1>
           <h1 className="tile-primary"> BookShelf </h1>
         </div>
+        {isLoadingUserBooks && <BookloopSpinner label="Loading your bookshelf" />}
         <div className="stats-bar">
           {/* <input placeholder="search book" /> */}
           <span className="stats-bar-content">
@@ -188,7 +195,7 @@ function BookShelfPage() {
             <NavLink to="/createChallenge" className="btn-default">Add a challenge</NavLink>
           </div>
           {challengeError && <p className="challenge-list-feedback" role="alert">{challengeError}</p>}
-          {areChallengesLoading && <p className="challenge-list-feedback">Loading challenges...</p>}
+          {areChallengesLoading && <BookloopSpinner label="Loading challenges" size="small" />}
           {!areChallengesLoading && !challengeError && challenges.length === 0 && (
             <p className="challenge-list-feedback">No challenges yet. Start one with another reader.</p>
           )}
@@ -258,7 +265,6 @@ function BookShelfPage() {
             return data.status === "WANT_TO_READ" && (
               <Card
                 key={data.bookId}
-                bookId={data.bookId}
                 title={data.book.title}
                 author={data.book.author}
                 coverUrl={data.book.coverUrl}
@@ -281,7 +287,6 @@ function BookShelfPage() {
             return data.status === "FINISHED" && (
               <Card
                 key={data.bookId}
-                bookId={data.bookId}
                 title={data.book.title}
                 author={data.book.author}
                 coverUrl={data.book.coverUrl}

@@ -35,7 +35,7 @@ function HomePage() {
                             <p> image </p>
                         </div>
                         <div className='tilted-card tilted-card-right'>
-                            <img src='https://m.media-amazon.com/images/I/81k3bgJ2EhL._SY522_.jpg' alt='Book cover'/>
+                            <img src='https://covers.openlibrary.org/b/isbn/9780525559474-L.jpg' alt='Book cover'/>
                             <p> image </p>
                         </div>
                     </div>

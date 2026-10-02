@@ -2,6 +2,7 @@ import { useEffect, useState, type FormEvent } from "react";
 import authService from "../services/index.services";
 import { useAuth } from "../context/useAuth";
 import { getApiError } from "../utils/getApiError";
+import BookloopSpinner from "../components/BookLoopSpinner";
 
 type Book = {
   id: number;
@@ -124,6 +125,7 @@ function AddChallengePage() {
               </option>
             ))}
           </select>
+          {isLoadingBooks && <BookloopSpinner label="Loading book choices" size="small" />}
         </label>
 
         <label className="challenge-field" htmlFor="challenge-title">
@@ -167,6 +169,7 @@ function AddChallengePage() {
 
         {errorMessage && <p className="challenge-feedback challenge-error" role="alert">{errorMessage}</p>}
         {successMessage && <p className="challenge-feedback challenge-success" role="status">{successMessage}</p>}
+        {isSubmitting && <BookloopSpinner label="Sending challenge" size="small" />}
 
         <div className="challenge-form-footer">
           <p>Your challenge will be sent as soon as you submit.</p>

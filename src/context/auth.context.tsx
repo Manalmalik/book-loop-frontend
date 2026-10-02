@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState, type ReactNode } from "react";
 import authService from "../services/index.services";
+import BookloopSpinner from "../components/BookLoopSpinner";
 
 // Context Component => shared the context with the app
 type AuthContextType = {
@@ -72,7 +73,7 @@ const AuthWrapper = ({ children }: AuthWrapperProps) => {
     }
 
     if(isVerifyingUser) {
-        return <h3> Verifying user credetials. </h3>
+        return <BookloopSpinner label="Verifying your session" />
     }
 
     return (

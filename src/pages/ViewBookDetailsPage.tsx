@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import authService from "../services/index.services";
 import { useAuth } from "../context/useAuth";
 import { getApiError } from "../utils/getApiError";
+import BookloopSpinner from "../components/BookLoopSpinner";
 
 type Book = {
   id: number;
@@ -105,7 +106,7 @@ function ViewBookDetailsPage() {
     <main className="container book-details-page">
       <Link to="/allBooks" className="book-details-back">← Back to discover</Link>
 
-      {isLoading && <p className="book-details-feedback">Loading book details...</p>}
+      {isLoading && <BookloopSpinner label="Loading book details" />}
       {!isLoading && errorMessage && <p className="book-details-feedback" role="alert">{errorMessage}</p>}
 
       {!isLoading && book && (
