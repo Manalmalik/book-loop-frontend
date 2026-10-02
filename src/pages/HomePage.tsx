@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom'
 
 function HomePage() {
+    
     return (
         <div className='container'>
             <div className='homepage-header'>
@@ -16,7 +17,7 @@ function HomePage() {
                     </div>
                     <p> A bookish little corner to track your pace, find your next favorite and make reading a part of your everyday life again. </p>
                     <div className='buttons'>
-                        <NavLink to="/" className="btn-primary"> Keep Reading </NavLink>
+                        <NavLink to='/books/6' className="btn-primary"> Keep Reading </NavLink>
                         <NavLink to="/" className="btn-default"> + Add to shelf </NavLink>
                     </div>
                 </div>

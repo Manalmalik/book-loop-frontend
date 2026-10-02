@@ -1,4 +1,7 @@
+import { NavLink } from "react-router-dom";
+
 type CardProps = {
+  bookId?: number,
   title: string,
   coverUrl: string,
   author: string,
@@ -7,7 +10,7 @@ type CardProps = {
   handleStartBtnClick?: () => {},
 }
 
-function Card({title, coverUrl, author, genre, handleBookmarkClick, handleStartBtnClick} : CardProps ) {
+function Card({bookId, title, coverUrl, author, genre, handleBookmarkClick, handleStartBtnClick} : CardProps ) {
 
   return (
      <div className='card'>
@@ -19,6 +22,7 @@ function Card({title, coverUrl, author, genre, handleBookmarkClick, handleStartB
         <p className="card-title"> {title} </p>
         <p className="card-desc"> by {author} </p>
         <div className="card-buttons">
+          {/* {bookId !== undefined && <NavLink className="btn-primary" to={`/books/${bookId}`}>View details</NavLink>} */}
           <button onClick={handleStartBtnClick} className="btn-default"> Start Reading </button>
         </div>
     </div>

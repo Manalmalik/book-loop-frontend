@@ -258,6 +258,7 @@ function BookShelfPage() {
             return data.status === "WANT_TO_READ" && (
               <Card
                 key={data.bookId}
+                bookId={data.bookId}
                 title={data.book.title}
                 author={data.book.author}
                 coverUrl={data.book.coverUrl}
@@ -280,6 +281,7 @@ function BookShelfPage() {
             return data.status === "FINISHED" && (
               <Card
                 key={data.bookId}
+                bookId={data.bookId}
                 title={data.book.title}
                 author={data.book.author}
                 coverUrl={data.book.coverUrl}

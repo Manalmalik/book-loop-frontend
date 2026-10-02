@@ -137,4 +137,5 @@ textarea {
 
 a, a:visited, a:active {
   text-decoration: none;
+  color: var(--color-ink);
 }

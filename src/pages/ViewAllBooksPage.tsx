@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import Card from "../components/Card"
 import axios from "axios"
 import authService from "../services/index.services";
+import { data, NavLink, useNavigate } from "react-router-dom";
 
 type Book = {
   id: number,
@@ -25,6 +26,7 @@ function ViewAllBooksPage() {
     const [ allBooks, setAllBooks ] = useState<Book[]>([])
     const [ searchTerm, setSearchTerm ] = useState<string>("")
     const [ selectedGenre, setSelectedGenre ] = useState<string>("")
+    const navigate = useNavigate()
 
     const fetchAllBooks = async() => {
         try{
@@ -48,6 +50,10 @@ function ViewAllBooksPage() {
 
     const handleInputSelect = (genre: string) => {
         setSelectedGenre(genre)
+    }
+
+    const handleCardClick = (bookId: number) => {
+        navigate(`/books/${bookId}`)
     }
 
     const normalizedSearchTerm = searchTerm.trim().toLowerCase()
@@ -105,7 +111,9 @@ function ViewAllBooksPage() {
         <hr className="hr-secondary"/>
         <div className="cards">
             {filteredBooks?.map((book) => {
-                return <Card key={book.id} title={book.title} author={book.author} coverUrl={book.coverUrl} genre={book.genre} handleBookmarkClick={()=> handleBookmarkClick(book.id)} handleStartBtnClick={() => handleStartBtnClick(book.id)}/>
+                return <NavLink to={`/books/${book.id}`}>
+                        <Card key={book.id} bookId={book.id} title={book.title} author={book.author} coverUrl={book.coverUrl} genre={book.genre} handleBookmarkClick={()=> handleBookmarkClick(book.id)} handleStartBtnClick={() => handleStartBtnClick(book.id)}/>
+                    </NavLink>
             })}
         </div>
 

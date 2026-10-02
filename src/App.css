@@ -860,3 +860,306 @@ gap: var(--space-xs);
     flex-direction: column;
   }
 }
+
+.card-details-link {
+  display: inline-flex;
+  min-height: 42px;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-sm) var(--space-md);
+  border: 2px solid var(--color-ink);
+  color: var(--color-ink);
+  background: var(--color-paper);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.book-details-page {
+  max-width: 1100px;
+  gap: var(--space-xl);
+}
+
+.book-details-back {
+  width: fit-content;
+  color: var(--color-violet);
+  font-size: var(--text-sm);
+  font-weight: 700;
+}
+
+.book-details-feedback {
+  padding: var(--space-md);
+  color: var(--color-text-muted);
+  background: var(--color-white);
+  border-left: 4px solid var(--color-teal);
+  font-size: var(--text-sm);
+  line-height: 1.5;
+}
+
+.book-details-hero {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.7fr) minmax(0, 1.5fr);
+  gap: var(--space-2xl);
+  align-items: start;
+}
+
+.book-details-cover-wrap {
+  width: 100%;
+  max-width: 340px;
+  aspect-ratio: 3 / 4;
+  background: var(--color-soft-pink);
+  border: 2px solid var(--color-ink);
+  box-shadow: 6px 6px var(--color-ink);
+}
+
+.book-details-cover {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.book-details-cover-placeholder {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  place-items: center;
+  padding: var(--space-md);
+  font-family: var(--font-reading);
+  text-align: center;
+}
+
+.book-details-main {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-md);
+}
+
+.book-details-eyebrow {
+  color: var(--color-violet);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.book-details-main h1 {
+  font-size: var(--text-3xl);
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+}
+
+.book-details-author {
+  font-family: var(--font-reading);
+  font-size: var(--text-lg);
+}
+
+.book-details-description {
+  max-width: 68ch;
+  color: var(--color-text-muted);
+  font-family: var(--font-reading);
+  font-size: var(--text-md);
+  line-height: 1.7;
+  white-space: pre-line;
+}
+
+.book-facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  width: 100%;
+  margin: var(--space-sm) 0 0;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.book-facts > div {
+  min-width: 0;
+  padding: var(--space-md) var(--space-sm) var(--space-md) 0;
+}
+
+.book-facts dt {
+  color: var(--color-text-muted);
+  font-size: var(--text-xxs);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.book-facts dd {
+  margin: var(--space-xs) 0 0;
+  font-size: var(--text-sm);
+  overflow-wrap: anywhere;
+}
+
+.book-details-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  padding-top: var(--space-lg);
+  border-top: 2px solid var(--color-ink);
+}
+
+.book-details-section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.book-details-section-heading h2 {
+  margin-top: var(--space-xs);
+  font-size: var(--text-2xl);
+  text-transform: uppercase;
+}
+
+.challenge-count {
+  display: grid;
+  width: 40px;
+  aspect-ratio: 1;
+  place-items: center;
+  background: var(--color-yellow);
+  border: 2px solid var(--color-ink);
+  font-weight: 700;
+}
+
+.user-book-details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  padding: var(--space-lg);
+  background: var(--color-white);
+  border: 2px solid var(--color-ink);
+  box-shadow: 4px 4px var(--color-teal);
+}
+
+.user-book-status {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.user-book-progress {
+  flex: 1;
+  min-width: 0;
+}
+
+.user-book-progress-label {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-xs);
+  font-size: var(--text-xs);
+}
+
+.user-book-progress-track {
+  height: 10px;
+  overflow: hidden;
+  background: var(--color-soft-pink);
+  border: 1px solid var(--color-ink);
+}
+
+.user-book-progress-track > span {
+  display: block;
+  height: 100%;
+  background: var(--color-teal);
+}
+
+.user-book-facts {
+  border-bottom: 0;
+}
+
+.user-book-notes {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding: var(--space-md);
+  background: var(--color-paper);
+  font-family: var(--font-reading);
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  white-space: pre-line;
+}
+
+.user-book-notes strong {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+}
+
+.book-challenge-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: var(--space-md);
+}
+
+.book-challenge-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-md);
+  min-width: 0;
+  padding: var(--space-md);
+  background: var(--color-white);
+  border: 2px solid var(--color-ink);
+  box-shadow: 3px 3px var(--color-pink);
+}
+
+.book-challenge-item h3 {
+  margin-top: var(--space-sm);
+  font-family: var(--font-reading);
+  font-size: var(--text-lg);
+  overflow-wrap: anywhere;
+}
+
+.book-challenge-item > div > p:not(.challenge-item-message) {
+  margin-top: var(--space-xs);
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+@media (max-width: 640px) {
+  .book-details-page {
+    padding: var(--space-xl) var(--space-md);
+  }
+
+  .book-details-hero {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+
+  .book-details-cover-wrap {
+    width: min(72vw, 280px);
+  }
+
+  .book-details-main h1 {
+    font-size: var(--text-2xl);
+  }
+
+  .book-facts {
+    grid-template-columns: 1fr;
+  }
+
+  .book-facts > div {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-md);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .book-facts > div:last-child {
+    border-bottom: 0;
+  }
+
+  .user-book-details {
+    padding: var(--space-md);
+  }
+
+  .user-book-status {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .user-book-progress {
+    width: 100%;
+  }
+}

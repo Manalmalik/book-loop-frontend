@@ -9,6 +9,7 @@ import BookShelfPage from "./pages/BookShelfPage";
 import ViewAllBooksPage from "./pages/ViewAllBooksPage";
 import PrivateWrapper from "./components/PrivateWrapper";
 import AddChallengePage from "./pages/AddChallengePage";
+import ViewBookDetailsPage from "./pages/ViewBookDetailsPage";
 
 function App() {
   return (
@@ -22,8 +23,9 @@ function App() {
         <Route path="/" element={<HomePage/>} />
         <Route path="/bookshelf" element={<PrivateWrapper> <BookShelfPage/> </PrivateWrapper>}/>
         <Route path="/allBooks" element={<ViewAllBooksPage/>}/>
+        <Route path="/books/:bookId" element={<ViewBookDetailsPage/>}/>
         <Route path="/createChallenge" element={<PrivateWrapper> <AddChallengePage/> </PrivateWrapper>}/>
-      
+
       </Routes>
     </div>
     </div>
