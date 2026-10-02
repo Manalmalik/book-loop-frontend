@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
 import Card from "../components/Card"
 import axios from "axios"
+import authService from "../services/index.services";
+import { useAuth } from "../context/useAuth";
 
 type Book = {
   id: number,
@@ -24,6 +26,7 @@ function ViewAllBooksPage() {
     const [ allBooks, setAllBooks ] = useState<Book[]>([])
     const [ searchTerm, setSearchTerm ] = useState<string>("")
     const [ selectedGenre, setSelectedGenre ] = useState<string>("")
+    const { loggedUserId } = useAuth()
 
     const fetchAllBooks = async() => {
         try{
@@ -42,6 +45,7 @@ function ViewAllBooksPage() {
 
     const handleSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearchTerm(e.target.value)
+
     }
 
     const handleInputSelect = (genre: string) => {
@@ -54,6 +58,24 @@ function ViewAllBooksPage() {
         const matchesGenre = !selectedGenre || book.genre.trim().toLowerCase() === selectedGenre.toLowerCase()
         return matchesSearch && matchesGenre
     })
+
+    const handleBookmarkClick = async(bookId: number,) => {
+        try {
+            const response = await authService.post(`/auth/user-books/${bookId}`, {status: "WANT_TO_READ"})
+            console.log(response)
+        }catch(e) {
+            console.log(e)
+        }
+    }
+
+     const handleStartBtnClick = async(bookId: number) => {
+        try {
+            const response = await authService.post(`/auth/user-books/${bookId}`, {status: "READING"})
+            console.log(response)
+        }catch(e) {
+            console.log(e)
+        }
+    }
 
   return (
    <div className='container'>
@@ -85,7 +107,7 @@ function ViewAllBooksPage() {
         <hr className="hr-secondary"/>
         <div className="cards">
             {filteredBooks?.map((book) => {
-                return <Card key={book.id} title={book.title} author={book.author} coverUrl={book.coverUrl} genre={book.genre}/>
+                return <Card key={book.id} title={book.title} author={book.author} coverUrl={book.coverUrl} genre={book.genre} handleBookmarkClick={()=> handleBookmarkClick(book.id)} handleStartBtnClick={() => handleStartBtnClick(book.id)}/>
             })}
         </div>
 

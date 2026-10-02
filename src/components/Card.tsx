@@ -3,16 +3,11 @@ type CardProps = {
   coverUrl: string,
   author: string,
   genre: string,
+  handleBookmarkClick?: () => {},
+  handleStartBtnClick?: () => {},
 }
 
-function Card({title, coverUrl, author, genre} : CardProps ) {
-  const handleBookmarkClick = () => {
-   console.log("added to favorite")
-  }
-
-  const handleStartBtnClick = () => {
-    console.log("added to Reading")
-  }
+function Card({title, coverUrl, author, genre, handleBookmarkClick, handleStartBtnClick} : CardProps ) {
 
   return (
      <div className='card'>

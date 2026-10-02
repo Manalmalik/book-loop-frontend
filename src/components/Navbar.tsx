@@ -24,9 +24,9 @@ function Navbar() {
           <NavLink to="/allBooks" >
           Discover Books
           </NavLink>
-          <NavLink to="/" >
+          <NavLink to="/bookshelf" >
             {" "}
-            Progress{" "}
+            My Shelf{" "}
           </NavLink>
           <NavLink to="/">
             {" "}

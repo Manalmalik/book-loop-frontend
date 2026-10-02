@@ -61,11 +61,10 @@ function AuthForm() {
       const response = await authService.post("/auth/login", body);
       localStorage.setItem("authToken", response.data.authToken);
 
-      console.log(response.data);
       //update auth states
       setIsLoggedIn(true);
       setLoggedUserId(response.data.payload._id);
-      navigate("/");
+      navigate("/bookShelf");
     } catch (error) {
       const apiError = getApiError(error);
 

@@ -278,6 +278,7 @@
 .header-container {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .page-header{
@@ -367,3 +368,143 @@
   right: -3px;
 }
 
+/* BOOKSHELF */
+.reading-section {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-paper);
+  gap: var(--space-sm);
+}
+
+.reading-section-caption {
+  display: flex;
+  gap: var(--space-xs);
+  align-items: center;
+  font-weight: 500;
+}
+
+.reading-section-caption > p {
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+}
+
+.reading-section-caption > svg {
+  font-size: var(--text-sm);
+}
+
+.reading-secton-header {
+  display: flex;
+  justify-content:  space-between;
+  align-items: center;
+}
+
+.reading-secton-header > .heading {
+  font-size: var(--text-2xl);
+  font-weight: 900;
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.heading-pink {
+  color: var(--color-teal);
+}
+
+.reading-secton-header > p {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  text-transform: capitalize;
+}
+
+/* BOOKCARD */
+.book-card {
+  display: flex;
+  background-color: var(--color-white);
+  border: 2px solid var(--color-ink);
+  box-shadow: 3px 3px var(--color-primary);
+  padding: var(--space-sm);
+  gap: var(--space-md);
+  align-items: flex-start;
+}
+
+.book-card-img > img {
+  width: 12rem;
+  height: 16rem;
+}
+
+.book-card-img > p {
+  font-size: var(--text-xxs);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  font-weight: 600;
+  justify-self: center;
+}
+
+.book-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.book-card-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.book-card-header > h3 {
+  font-family: var(--font-reading);
+  font-size: var(--text-xl);
+}
+
+.book-card-header > p {
+  font-size: var(--text-sm);
+}
+
+.book-card-label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.book-card-label > p {
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  font-weight: 500;
+  font-size: var(--text-xs);
+}
+
+.book-card-label > svg {
+  color: var(--color-violet);
+  font-size: var(--text-xxs);
+}
+
+/* PROGRESS BAR */
+.progress-bar-container {
+display: flex;
+flex-direction: column;
+gap: var(--space-xs);
+}
+
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--text-xs);
+}
+
+.progress-track {
+  width: 100%;
+  height: 12px;
+  background: #ffdae3;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--color-pink);
+  transition: width 0.3s ease;
+}
+
+.progress-bar-container > p {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}

@@ -33,9 +33,8 @@ const AuthWrapper = ({ children }: AuthWrapperProps) => {
     const verifyUser = async() => {
         // send token to the BE to verify it
         const  authToken = localStorage.getItem("authToken")
-
         try {
-
+            
             if (!authToken) {
                 setIsLoggedIn(false)
                 setLoggedUserId(null)
@@ -43,12 +42,12 @@ const AuthWrapper = ({ children }: AuthWrapperProps) => {
                 setIsVerifyingUser(false)
                 return
             }
-
             const response = await authService.get("/auth/verify")
-
+            
+            console.log("verify", response.data)
             setIsLoggedIn(true)
-            setLoggedUserId(response.data.payload._id)
-            setUserRole(response.data.payload.role)
+            setLoggedUserId(response.data.id)
+            // setUserRole(response.data.payload.role)
             setIsVerifyingUser(false)
         } catch(error) {
             setIsLoggedIn(false)
