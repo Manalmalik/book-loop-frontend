@@ -108,7 +108,7 @@ function AuthForm() {
           <label> Password: </label>
           <input
             required
-            type="text"
+            type="password"
             name="password"
             placeholder="Enter your password"
             value={password}

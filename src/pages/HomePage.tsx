@@ -17,8 +17,8 @@ function HomePage() {
                     </div>
                     <p> A bookish little corner to track your pace, find your next favorite and make reading a part of your everyday life again. </p>
                     <div className='buttons'>
-                        <NavLink to='/books/6' className="btn-primary"> Keep Reading </NavLink>
-                        <NavLink to="/" className="btn-default"> + Add to shelf </NavLink>
+                        <NavLink to='/allBooks' className="btn-primary"> + Add to shelf </NavLink>
+                        <NavLink to="/bookshelf" className="btn-default"> Continue Reading </NavLink>
                     </div>
                 </div>
                 <div className='header-right-content'>

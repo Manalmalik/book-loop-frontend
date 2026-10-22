@@ -120,6 +120,9 @@
   box-shadow: 3px 3px var(--color-ink) ;
   font-size: var(--text-sm);
 }
+a.btn-primary{
+  color: var(--color-paper);
+}
 
 .btn-default {
   background-color: var(--color-yellow);
