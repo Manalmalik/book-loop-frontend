@@ -28,10 +28,10 @@ function Navbar() {
             {" "}
             My Shelf{" "}
           </NavLink>
-          <NavLink to="/">
+          {/* <NavLink to="/">
             {" "}
             Reading club{" "}
-          </NavLink>
+          </NavLink> */}
         </div>
         {!isLoggedIn ? (
           <div className="buttons">

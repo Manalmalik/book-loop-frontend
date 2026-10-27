@@ -190,7 +190,7 @@ function BookShelfPage() {
           <div className="challenge-list-heading">
             <div>
               <h3>Reading challenges</h3>
-              <p>Keep each other turning pages.</p>
+              <p>Keep turning pages.</p>
             </div>
             <NavLink to="/createChallenge" className="btn-default">Add a challenge</NavLink>
           </div>
